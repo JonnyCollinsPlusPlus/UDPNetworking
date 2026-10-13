@@ -1,5 +1,5 @@
-# **UDPGameNetworking Library**
-A lightweight C++ UDP networking solution designed specifically for game development, featuring reliable messaging and interpolation without engine dependencies.
+# **UDPNetworking Library**
+A lightweight C++ UDP networking solution, featuring reliable messaging and interpolation.
 
 ### **Features**
 - **Generic data streaming over UDP** (Define custom data types, with custom serialization and deserialization methods, and let the library do the rest)
@@ -18,7 +18,7 @@ A lightweight C++ UDP networking solution designed specifically for game develop
 - Change settings and see how the behaviour changes
 
 ### **Installation**
-- clone the repo, build with cmake, and run
+- clone the repo, and build CmakeLists.txt with Cmake and run DemoApp.exe
 
 ### **Status**
 - **Working**:
@@ -30,5 +30,6 @@ A lightweight C++ UDP networking solution designed specifically for game develop
 
 ### **Planned Improvements**
 - Cleanup and optimization
-- Wrapper implementations for Godot and Unity
+- LAN testing
+- Wrapper implementations for game engines, or other services that might need networking
 - Additional documentation
