@@ -75,6 +75,7 @@ void DemoClient::ApplySettings(LibSettings* s){
 }
 Demo::Demo()
 {
+	done = false;
 	//2 clients each with a different port, 100ms lerp delay, and lerping enabled, as well as 100ms resend delay
 	client1 = new DemoClient(true, 55511, 100, true, 20);
 	client2 = new DemoClient(false, 55522, 100, true, 20);
@@ -99,6 +100,9 @@ void Demo::Update(float deltaTime)
 	
 	SDL_Event e;
 	while (SDL_PollEvent(&e)) {
+		if (e.type == SDL_EVENT_QUIT || e.type == SDL_EVENT_WINDOW_CLOSE_REQUESTED){
+			done = true;
+		}
 		gui->HandleEvent(e);
 		client1->HandleInput(e);
 		client2->HandleInput(e);
@@ -118,7 +122,7 @@ void Demo::Close()
 
 bool Demo::Done()
 {
-	return false;
+	return done;
 }
 
 void Demo::SetPacketLoss(int lossRate){

@@ -48,6 +48,7 @@ private:
 	DemoClient* client1;
 	DemoClient* client2;
 	DemoGUI* gui;
+	bool done;
 protected:
 public:
 	Demo();
