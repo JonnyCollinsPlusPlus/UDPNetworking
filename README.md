@@ -31,11 +31,11 @@ Try 30% packet loss with interpolation off and then on to see the difference.
 **Requirements:** CMake 3.x+, a C++17 compiler
 
 ```bash
-git clone <repo>
+git clone https://github.com/JonnyCollinsPlusPlus/UDPNetworking
 cd UDPNetworking
 cmake -B build
 cmake --build build
-./build/DemoApp   # DemoApp.exe on Windows
+./build/Debug/DemoApp   # DemoApp.exe on Windows
 ```
 Tested on: Windows (MSVC).
 
