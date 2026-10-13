@@ -1,35 +1,58 @@
-# **UDPNetworking Library**
-A lightweight C++ UDP networking solution, featuring reliable messaging and interpolation.
+# UDPNetworking
 
-### **Features**
-- **Generic data streaming over UDP** (Define custom data types, with custom serialization and deserialization methods, and let the library do the rest)
-- **Networked value lerping** (Easily toggle in Library settings, customizable delay, smooth networked objects even with rocky connections)
-- **Important message confirmation** (Custom user messages can use message acknowledgement, even over UDP)
-- **Engine agnostic design** (Designed to be wrapped for use with any game engine, see Status)
-- **Simple demo to showcase engine functionality** (Fully functional example showing core capabilities)
+A lightweight C++ UDP networking library with **selective reliable messaging**, **custom data serialization**, and **snapshot interpolation**, built on SDL3.
 
-### **Demo**
-- Two clients running simultaneously on one system
-- Each client controls a square with real time position streaming
-- **Controls**:
-	- 'WASD' Move your square
-	- 'Mouse Hover' Select which client window to control
-	- 'M' send a message from the selected client, see result in settings window
-- Change settings and see how the behaviour changes
+![Demo screenshot or GIF](docs/demo.gif)
 
-### **Installation**
-- clone the repo, and build CmakeLists.txt with Cmake and run DemoApp.exe
+## Features
+- **Generic data streaming**: define your own data types with custom serialize/deserialize methods; the library handles transport.
+- **Optional reliability over UDP**: mark individual messages as important and they're acknowledged and resent. Everything else stays fire-and-forget.
+- **Networked value interpolation**: toggle it in settings, with a configurable delay, to smooth remote objects on unstable connections.
+- **Engine-agnostic core**: no engine dependencies in the core, so it can be wrapped for any engine or application (wrappers planned).
 
-### **Status**
-- **Working**:
-- Demo fully functional
-- Core networking is stable
-- **Limitations**:
-- Localhost tested only (not yet LAN)
-- No NAT traversal implementation or planned
 
-### **Planned Improvements**
-- Cleanup and optimization
-- LAN testing
-- Wrapper implementations for game engines, or other services that might need networking
-- Additional documentation
+## Demo
+Three windows run together: a **control GUI** (Dear ImGui) and **two client windows** (SDL3).
+
+| Control | Action |
+|---|---|
+| `WASD` | Move your square |
+| Mouse hover | Choose which client you're controlling |
+| `M` | Send a reliable message from the selected client |
+
+In the control GUI you can:
+- adjust simulated **packet loss**
+- toggle **interpolation** and set its **delay** per client
+
+Each client shows your square (green), the remote player (yellow), and the reliable-message indicators.
+Try 30% packet loss with interpolation off and then on to see the difference.
+
+## Building
+**Requirements:** CMake 3.x+, a C++17 compiler
+
+```bash
+git clone <repo>
+cd UDPNetworking
+cmake -B build
+cmake --build build
+./build/DemoApp   # DemoApp.exe on Windows
+```
+Tested on: Windows (MSVC).
+
+
+## Status
+**Working:** core networking is stable; the demo is fully functional.
+
+**Limitations**
+- Tested on localhost with simulated packet loss; not yet on a real LAN.
+- No NAT traversal (out of scope).
+
+## Roadmap
+- [ ] LAN testing
+- [ ] Unit tests and CI (GitHub Actions)
+- [ ] API documentation
+- [ ] Engine and framework wrappers (e.g. Godot, Unity)
+- [ ] Cleanup and performance profiling
+
+## Examples built with this library
+- Collaborative whiteboard (link once it's up)
