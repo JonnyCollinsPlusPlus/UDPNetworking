@@ -53,6 +53,3 @@ Tested on: Windows (MSVC).
 - [ ] API documentation
 - [ ] Engine and framework wrappers (e.g. Godot, Unity)
 - [ ] Cleanup and performance profiling
-
-## Examples built with this library
-- Collaborative whiteboard (link once it's up)
